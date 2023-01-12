@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pengaduan.LoginController">
+   <left>
+      <AnchorPane prefHeight="407.0" prefWidth="228.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="39.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/biu.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="50.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sistem Pengaduan" textAlignment="CENTER">
+               <font>
+                  <Font name="Chilanka Regular" size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="104.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&amp;" textAlignment="CENTER">
+               <font>
+                  <Font name="Chilanka Regular" size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="72.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Laporan RT" textAlignment="CENTER">
+               <font>
+                  <Font name="Chilanka Regular" size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="14.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Universitas Bina Insani" textAlignment="CENTER">
+               <font>
+                  <Font name="Chilanka Regular" size="15.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="400.0" prefWidth="332.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text layoutX="83.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login Page" textAlignment="CENTER">
+               <font>
+                  <Font name="Chilanka Regular" size="25.0" />
+               </font>
+            </Text>
+            <Text layoutX="22.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" textAlignment="CENTER">
+               <font>
+                  <Font name="Chilanka Regular" size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="23.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" textAlignment="CENTER">
+               <font>
+                  <Font name="Chilanka Regular" size="15.0" />
+               </font>
+            </Text>
+            <TextField fx:id="fieldEmail" layoutX="23.0" layoutY="113.0" prefHeight="38.0" prefWidth="247.0" />
+            <Button fx:id="btnLogin" layoutX="24.0" layoutY="288.0" mnemonicParsing="false" onAction="#userLogin" prefHeight="38.0" prefWidth="243.0" text="Login" />
+            <Button fx:id="cancelButton" layoutX="24.0" layoutY="339.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="38.0" prefWidth="243.0" text="Cancel" />
+            <PasswordField fx:id="fieldPassword" layoutX="22.0" layoutY="200.0" prefHeight="38.0" prefWidth="248.0" />
+            <Label fx:id="wrongLabel" layoutX="23.0" layoutY="255.0" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
