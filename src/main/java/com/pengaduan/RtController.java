@@ -10,6 +10,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,6 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.Optional;
@@ -53,6 +55,9 @@ public class RtController implements Initializable {
 
     @FXML
     private TextField noRtInput;
+
+    @FXML
+    private TextField searchRt;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -159,12 +164,17 @@ public class RtController implements Initializable {
     }
     
     public void showRts(){
-        ObservableList<RtService> list = getRtList();
-
+       
+        FilteredList<RtService> flRt = new FilteredList<>(getRtList(), p -> true);
         noIdColumn.setCellValueFactory(new PropertyValueFactory<RtService, Integer>("rtId"));
         noRtColumn.setCellValueFactory(new PropertyValueFactory<RtService, Integer>("noRt"));
+        
+        searchRt.textProperty().addListener((obs, newValue, oldValue) -> {
+            flRt.setPredicate(p -> Integer.toString(p.getNoRt()).toLowerCase().contains(newValue.toLowerCase().trim()));
+        });
 
-        tableView.setItems(list);
+        tableView.setItems(flRt);
+
     }
 
     public void executeQuery(String query){

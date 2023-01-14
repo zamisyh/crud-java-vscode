@@ -56,7 +56,7 @@
                   <TableColumn fx:id="noRtColumn" prefWidth="229.0" text="No RT" />
               </columns>
             </TableView>
-            <TextField layoutX="409.0" layoutY="130.0" promptText="Cari no RT" />
+            <TextField fx:id="searchRt" layoutX="409.0" layoutY="130.0" promptText="Cari no RT" />
             <TextField fx:id="noRtInput" layoutX="26.0" layoutY="195.0" prefHeight="37.0" prefWidth="201.0" />
             <Label layoutX="29.0" layoutY="163.0" text="No RT" />
             <Button layoutX="26.0" layoutY="263.0" mnemonicParsing="false" onAction="#saveOnAction" style="-fx-background-color: C6F9AC;" text="Save">
@@ -64,7 +64,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="105.0" layoutY="263.0" mnemonicParsing="false" onAction="#editOnAction" style="-fx-background-color: ACF9D7;" text="Update">
+            <Button layoutX="89.0" layoutY="263.0" mnemonicParsing="false" onAction="#editOnAction" style="-fx-background-color: ACF9D7;" text="Update">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
