@@ -7,6 +7,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -41,40 +43,46 @@ public class LoginController {
 
             App app = new App();
 
-            if (fieldEmail.getText().toString().equals("zamzam@gmail.com") && fieldPassword.getText().toString().equals("zamzam")) {
-                wrongLabel.setText("Succesfully login");
+            DBConnection connection = new DBConnection();
+            Connection connectDB = connection.getConnection();
 
-                app.changeScene("dashboard/home.fxml");
+            Statement statement = connectDB.createStatement();
+            ResultSet rsQuery = statement.executeQuery("SELECT * FROM users WHERE email = '"+ fieldEmail.getText() +"' AND password = '" + fieldPassword.getText() +"'");
+            
+            if (rsQuery.next()) {
+                if (fieldEmail.getText().toString().equals(rsQuery.getString("email")) && fieldPassword.getText().toString().equals(rsQuery.getString("password"))) {
+                    wrongLabel.setText("Succesfully login");
+                    app.changeScene("HomeFrame.fxml");
+
+                    // infoBox("Login Berhasil", null, "Success");
+
+                    
+                }
             }else if(fieldEmail.getText().isEmpty() || fieldPassword.getText().isEmpty()){
-                wrongLabel.setText("Email or password is required");   
+                infoBox("Email or password is required", null, "Failed");
+
             }else{
-                wrongLabel.setText("Invalid credentials");
+                infoBox("Please enter correct Email and Password", null, "Failed");
+
             }
+
+            
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
     public void cancelButtonOnAction(ActionEvent event){
-        // Stage stage = (Stage) cancelButton.getScene().getWindow();
-        // stage.close();
-        
-        DBConnection connection = new DBConnection();
-        Connection connectDB = connection.getConnection();
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
+    }
 
-        try {
-            Statement statement = connectDB.createStatement();
-            ResultSet rsQuery = statement.executeQuery("SELECT * FROM users");
-
-            while (rsQuery.next()) {
-                System.out.println(rsQuery.getString("email"));
-            }
-
-        } catch (Exception e) {
-            // TODO: handle exception
-        }
-        
-        
+    public static void infoBox(String infoMessage, String headerText, String title) {
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setContentText(infoMessage);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.showAndWait();
     }
 
 }

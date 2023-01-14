@@ -7,6 +7,7 @@ module com.pengaduan {
    //requires mysql.connector.j;
 
     opens com.pengaduan;
+    opens com.pengaduan.services;
     // opens com.pengaduan to javafx.fxml;
     // exports com.pengaduan;
 }
