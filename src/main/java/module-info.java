@@ -8,6 +8,7 @@ module com.pengaduan {
 
     opens com.pengaduan;
     opens com.pengaduan.services;
+    opens com.pengaduan.helpers;
     // opens com.pengaduan to javafx.fxml;
     // exports com.pengaduan;
 }
