@@ -37,7 +37,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 
+import com.pengaduan.helpers.AlertComponent;
 import com.pengaduan.services.RtService;
 import com.pengaduan.services.WargaService;
 
@@ -98,6 +100,9 @@ public class WargaController implements Initializable {
     private DatePicker tglLahirDate;
 
     @FXML
+    private Label labelAlert;
+
+    @FXML
     private TextField searchInput;
 
     @FXML
@@ -121,10 +126,27 @@ public class WargaController implements Initializable {
         DBConnection connection = new DBConnection();
         Connection connectDB = connection.getConnection();
 
+        String nama = namaInput.getText();
+        int noRt = getNoRtId();
+        int umur = Integer.parseInt(umurInput.getText());
+        String agama = agamaInput.getText();
+        String jenisKelamin = jkCombobox.getValue();
+        String noTelp = noTelpInput.getText();
+        LocalDate tanggalLahir = tglLahirDate.getValue();
+        String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
+        String query = "INSERT INTO wargas VALUES(null, '"+ nama +"', '"+ noRt +"', '"+ umur +"', '"+ agama +"', '"+ jenisKelamin +"', '"+ noTelp +"', '"+ tanggalLahir +"', '"+ timeStamp +"', '"+ timeStamp +"')";
+
         try {
            
             Statement statement = connectDB.createStatement();
-            String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
+            statement.executeUpdate(query);
+            reset();
+            showWarga();
+            showRtCombobox();
+
+            AlertComponent alert = new AlertComponent();
+            alert.showAlert("Succesfully create data", "Yeaaay!", "Success");
+
             
 
         } catch (Exception e) {
@@ -133,7 +155,9 @@ public class WargaController implements Initializable {
     }
 
     @FXML
-    public void wargaResetOnAction(ActionEvent event){}
+    public void wargaResetOnAction(ActionEvent event){
+        reset();
+    }
 
     @FXML
     public void wargaUpdateOnAction(ActionEvent event){}
@@ -281,6 +305,16 @@ public class WargaController implements Initializable {
         this.noRtId = noRtId;
     }
 
+    public void reset(){
+        namaInput.setText(null);
+        umurInput.setText(null);
+        agamaInput.setText(null);
+        tglLahirDate.setValue(null);
+        noTelpInput.setText(null);
+    }
+
+    
+
     public void btnHomeOnAction(ActionEvent event) throws IOException{
         App app = new App();
         app.changeScene("HomeFrame.fxml");
@@ -290,5 +324,7 @@ public class WargaController implements Initializable {
         App app = new App();
         app.changeScene("RtFrame.fxml");
     }
+
+    
 
 }
