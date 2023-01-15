@@ -2,15 +2,17 @@ package com.pengaduan.services;
 
 public class WargaService {
     
+    private int wargaId;
     private String nama;
     private int noRt;
     private int umur;
     private String agama;
     private String jenisKelamin;
-    private int noTelp;
+    private String noTelp;
     private String tanggalLahir;
 
-    public WargaService(String nama, int noRt, int umur, String agama, String jenisKelamin, int noTelp, String tanggalLahir){
+    public WargaService(int wargaId, String nama, int noRt, int umur, String agama, String jenisKelamin, String noTelp, String tanggalLahir){
+        this.wargaId = wargaId;
         this.nama = nama;
         this.noRt = noRt;
         this.umur = umur;
@@ -18,6 +20,14 @@ public class WargaService {
         this.jenisKelamin = jenisKelamin;
         this.noTelp = noTelp;
         this.tanggalLahir = tanggalLahir;
+    }
+
+    public int getWargaId(){
+        return wargaId;
+    }
+
+    public void setWargaId(int wargaId){
+        this.wargaId = wargaId;
     }
 
     public String getNama(){
@@ -64,11 +74,11 @@ public class WargaService {
         return tanggalLahir;
     }
 
-    public int getNoTelp(){
+    public String getNoTelp(){
         return noTelp;
     }
 
-    public void setNoTelp(int noTelp){
+    public void setNoTelp(String noTelp){
         this.noTelp = noTelp;
     }
 

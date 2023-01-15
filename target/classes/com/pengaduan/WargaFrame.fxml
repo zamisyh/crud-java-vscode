@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -13,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="696.0" prefWidth="1090.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pengaduan.WargaController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="696.0" prefWidth="1198.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pengaduan.WargaController">
    <top>
       <AnchorPane prefHeight="55.0" prefWidth="600.0" style="-fx-background-color: C0CDE4;" BorderPane.alignment="CENTER">
          <children>
@@ -51,32 +53,55 @@
                   <Font name="Chilanka Regular" size="18.0" />
                </font>
             </Text>
-            <TableView fx:id="tableWarga" layoutX="310.0" layoutY="145.0" prefHeight="468.0" prefWidth="744.0">
+            <TableView fx:id="tableWarga" layoutX="426.0" layoutY="145.0" prefHeight="468.0" prefWidth="736.0">
               <columns>
-                <TableColumn prefWidth="44.0" text="Id" />
-                <TableColumn prefWidth="171.0" text="Nama" />
-                  <TableColumn prefWidth="54.0" text="No Rt" />
-                  <TableColumn prefWidth="60.0" text="Umur" />
-                  <TableColumn prefWidth="81.0" text="Agama" />
-                  <TableColumn prefWidth="46.0" text="Jk" />
-                  <TableColumn prefWidth="130.0" text="No Telp" />
-                  <TableColumn prefWidth="157.0" text="Tanggal Lahir" />
+                <TableColumn fx:id="wargaIdColumn" prefWidth="44.0" text="Id" />
+                <TableColumn fx:id="namaColumn" prefWidth="171.0" text="Nama" />
+                  <TableColumn fx:id="noRtColumn" prefWidth="54.0" text="No Rt" />
+                  <TableColumn fx:id="umurColumn" prefWidth="60.0" text="Umur" />
+                  <TableColumn fx:id="agamaColumn" prefWidth="81.0" text="Agama" />
+                  <TableColumn fx:id="jenisKelaminColumn" prefWidth="46.0" text="Jk" />
+                  <TableColumn fx:id="noTelpColumn" prefWidth="130.0" text="No Telp" />
+                  <TableColumn fx:id="tanggalLahirColumn" prefWidth="157.0" text="Tanggal Lahir" />
               </columns>
             </TableView>
-            <Label layoutX="29.0" layoutY="283.0" text="Umur" />
-            <TextField fx:id="namaInput" layoutX="30.0" layoutY="169.0" prefHeight="32.0" prefWidth="223.0" promptText="Masukkan nama" />
-            <Label layoutX="30.0" layoutY="217.0" text="No RT" />
-            <ComboBox fx:id="noRtCombobox" layoutX="30.0" layoutY="242.0" prefHeight="30.0" prefWidth="150.0" />
-            <TextField fx:id="umurInput" layoutX="30.0" layoutY="306.0" prefHeight="32.0" prefWidth="223.0" promptText="Masukkan umur" />
+            <Label layoutX="31.0" layoutY="217.0" text="Umur" />
+            <TextField fx:id="namaInput" layoutX="30.0" layoutY="169.0" prefHeight="32.0" prefWidth="150.0" promptText="Masukkan nama" />
+            <Label layoutX="215.0" layoutY="145.0" text="No RT" />
+            <TextField fx:id="umurInput" layoutX="30.0" layoutY="240.0" prefHeight="32.0" prefWidth="347.0" promptText="Masukkan umur" />
             <Label layoutX="30.0" layoutY="145.0" text="Nama" />
-            <TextField fx:id="agamaInput" layoutX="30.0" layoutY="376.0" prefHeight="32.0" prefWidth="223.0" promptText="Masukkan agama" />
-            <Label layoutX="33.0" layoutY="351.0" text="Agama" />
-            <ComboBox fx:id="jkCombobox" layoutX="30.0" layoutY="448.0" prefHeight="30.0" prefWidth="150.0" />
-            <Label layoutX="31.0" layoutY="422.0" text="Jenis Kelamin" />
-            <TextField fx:id="noTelpInput" layoutX="30.0" layoutY="514.0" prefHeight="32.0" prefWidth="223.0" promptText="Masukkan agama" />
-            <Label layoutX="31.0" layoutY="490.0" text="No Telp" />
-            <Label layoutX="30.0" layoutY="558.0" text="Tanggal Lahir" />
-            <DatePicker fx:id="tglLahirDate" layoutX="29.0" layoutY="581.0" prefHeight="35.0" prefWidth="197.0" />
+            <TextField fx:id="agamaInput" layoutX="30.0" layoutY="313.0" prefHeight="32.0" prefWidth="347.0" promptText="Masukkan agama" />
+            <Label layoutX="26.0" layoutY="289.0" text="Agama" />
+            <Label layoutX="28.0" layoutY="363.0" text="Jenis Kelamin" />
+            <TextField fx:id="noTelpInput" layoutX="31.0" layoutY="461.0" prefHeight="32.0" prefWidth="347.0" promptText="Masukkan agama" />
+            <Label layoutX="31.0" layoutY="437.0" text="No Telp" />
+            <Label layoutX="179.0" layoutY="363.0" text="Tanggal Lahir" />
+            <DatePicker fx:id="tglLahirDate" layoutX="180.0" layoutY="390.0" prefHeight="35.0" prefWidth="197.0" />
+            <ChoiceBox fx:id="searchChoice" layoutX="425.0" layoutY="102.0" prefHeight="24.0" prefWidth="125.0" />
+            <TextField fx:id="searchInput" layoutX="560.0" layoutY="102.0" prefHeight="24.0" prefWidth="191.0" />
+            <Button fx:id="btnSave" layoutX="34.0" layoutY="524.0" mnemonicParsing="false" onAction="#wargaSaveOnAction" style="-fx-background-color: BAF9AC;" text="Save">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnReset" layoutX="118.0" layoutY="524.0" mnemonicParsing="false" onAction="#wargaResetOnAction" style="-fx-background-color: F8F9AC;" text="Reset">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnUpdate" layoutX="213.0" layoutY="524.0" mnemonicParsing="false" onAction="#wargaUpdateOnAction" style="-fx-background-color: ACDDF9;" text="Update">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnDelete" layoutX="316.0" layoutY="524.0" mnemonicParsing="false" onAction="#wargaDeleteOnAction" style="-fx-background-color: F9ACAC;" text="Delete">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label fx:id="labelAlert" layoutX="32.0" layoutY="571.0" />
+            <ComboBox fx:id="noRtCombobox" layoutX="213.0" layoutY="167.0" prefHeight="32.0" prefWidth="159.0" />
+            <ComboBox fx:id="jkCombobox" layoutX="26.0" layoutY="392.0" prefHeight="32.0" prefWidth="126.0" />
          </children>
       </Pane>
    </left>
