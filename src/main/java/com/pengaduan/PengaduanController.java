@@ -126,7 +126,50 @@ public class PengaduanController implements Initializable {
     }
 
     @FXML
-    public void btnPengaduanUpdateOnAction(ActionEvent event){}
+    public void btnPengaduanUpdateOnAction(ActionEvent event){
+        DBConnection connection = new DBConnection();
+        Connection connectDB = connection.getConnection();
+
+        AlertComponent al = new AlertComponent();
+        String judul = judulInput.getText();
+        int wargaId = getNoWargaId();
+        LocalDate tglPengaduan = tglDatePicker.getValue();
+        String deskripsi = deskripsiTextarea.getText();
+        String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
+
+
+        try {
+            Statement statement = connectDB.createStatement();
+
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("Konfirmasi Update Data");
+            alert.setContentText("Are you sure to update this data ?");
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if (result.get() == ButtonType.OK) {
+                PengaduanService pengaduan = tablePengaduan.getSelectionModel().getSelectedItem();
+            
+                String sql = "UPDATE pengaduans SET " 
+                + "warga_id='" + wargaId + "', " 
+                + "judul_pengaduan='" + judul + "', "
+                + "deskripsi_pengaduan='" + deskripsi + "', "
+                + "tanggal_pengaduan='" + tglPengaduan + "' WHERE id='"+ pengaduan.getPengaduanId() +"'";
+
+                statement.executeUpdate(sql);
+                
+                reset();
+                showPengaduan();
+                showWargaCombobox();
+    
+               
+                al.showAlert("Succesfully update data", "Yeaaay!", "Success");
+
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        
+    }
 
     @FXML
     public void btnPengaduanDeleteOnAction(ActionEvent event){
