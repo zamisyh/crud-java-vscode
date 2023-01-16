@@ -39,7 +39,7 @@ public class RtController implements Initializable {
     private Button btnHome;
 
     @FXML
-    private Button btnRt;
+    private Button btnWarga;
 
     @FXML
     private Label labelAlert;
@@ -195,9 +195,15 @@ public class RtController implements Initializable {
         app.changeScene("HomeFrame.fxml");
     }
 
-    public void btnRtOnAction(ActionEvent event) throws IOException{
+    public void btnWargaOnAction(ActionEvent event) throws IOException{
         App app = new App();
-        app.changeScene("RtFrame.fxml");
+        app.changeScene("WargaFrame.fxml");
+    }
+
+    public void btnPengaduanOnAction(ActionEvent event) throws IOException{
+        App app = new App();
+
+        app.changeScene("PengaduanFrame.fxml");
     }
     
 }

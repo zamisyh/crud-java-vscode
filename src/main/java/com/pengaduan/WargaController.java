@@ -412,6 +412,12 @@ public class WargaController implements Initializable {
         app.changeScene("RtFrame.fxml");
     }
 
+    public void btnPengaduanOnAction(ActionEvent event) throws IOException{
+        App app = new App();
+
+        app.changeScene("PengaduanFrame.fxml");
+    }
+
     
 
 }

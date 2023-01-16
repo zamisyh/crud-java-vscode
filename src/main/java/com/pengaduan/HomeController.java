@@ -19,6 +19,9 @@ public class HomeController {
     @FXML
     private Button btnWarga;
 
+    @FXML
+    private Button btnPengaduan;
+
     public void btnRtOnAction(ActionEvent event) throws IOException{
         App app = new App();
 
@@ -29,6 +32,13 @@ public class HomeController {
         App app = new App();
 
         app.changeScene("WargaFrame.fxml");
-
     }
+
+    public void btnPengaduanOnAction(ActionEvent event) throws IOException{
+        App app = new App();
+
+        app.changeScene("PengaduanFrame.fxml");
+    }
+
+    
 }
