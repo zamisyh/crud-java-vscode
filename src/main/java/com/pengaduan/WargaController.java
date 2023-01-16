@@ -115,8 +115,12 @@ public class WargaController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         showWarga();
         showRtCombobox();
+
         jkCombobox.getItems().addAll("L", "P");
         jkCombobox.setValue("L");
+        searchChoice.getItems().addAll("Nama", "No RT", "Jenis Kelamin");
+        searchChoice.setValue("Nama");
+
 
       
     }
@@ -160,10 +164,96 @@ public class WargaController implements Initializable {
     }
 
     @FXML
-    public void wargaUpdateOnAction(ActionEvent event){}
+    public void wargaUpdateOnAction(ActionEvent event){
+        DBConnection connection = new DBConnection();
+        Connection connectDB = connection.getConnection();
+
+        String nama = namaInput.getText();
+        int noRt = getNoRtId();
+        int umur = Integer.parseInt(umurInput.getText());
+        String agama = agamaInput.getText();
+        String jenisKelamin = jkCombobox.getValue();
+        String noTelp = noTelpInput.getText();
+        LocalDate tanggalLahir = tglLahirDate.getValue();
+        AlertComponent al = new AlertComponent();
+        
+
+        try {
+            Statement statement = connectDB.createStatement();
+
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("Konfirmasi Update Data");
+            alert.setContentText("Are you sure to update this data ?");
+            Optional<ButtonType> result = alert.showAndWait();
+    
+            if (result.get() == ButtonType.OK) {
+                WargaService warga = tableWarga.getSelectionModel().getSelectedItem();
+            
+                String sql = "UPDATE wargas SET " 
+                + "nama='" + nama + "', " 
+                + "rt_id='" + noRt + "', "
+                + "umur='" + umur + "', "
+                + "agama='" + agama + "', "
+                + "jenis_kelamin='" + jenisKelamin + "', "
+                + "no_telp='" + noTelp + "', "
+                + "tanggal_lahir='" + tanggalLahir + "' WHERE id='"+ warga.getWargaId() +"'";
+
+                statement.executeUpdate(sql);
+                
+                reset();
+                showWarga();
+                showRtCombobox();
+    
+               
+                al.showAlert("Succesfully update data", "Yeaaay!", "Success");
+
+            }
+
+        } catch (Exception e) {
+           al.showAlert(e.getMessage(), "Oppsss, something went wrong", "Error");
+        }
+    }
 
     @FXML
-    public void wargaDeleteOnAction(ActionEvent event){}
+    public void wargaDeleteOnAction(ActionEvent event){
+        DBConnection connection = new DBConnection();
+        Connection connectDB = connection.getConnection();
+
+        try {
+            Statement statement = connectDB.createStatement();
+
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("Konfirmasi Delete Data");
+            alert.setContentText("Are you sure to delete this data ?");
+            Optional<ButtonType> result = alert.showAndWait();
+    
+            if (result.get() == ButtonType.OK) {
+                WargaService warga = tableWarga.getSelectionModel().getSelectedItem();
+                statement.executeUpdate("DELETE FROM wargas WHERE id = " + warga.getWargaId());
+                
+                reset();
+                showWarga();
+                showRtCombobox();
+    
+                AlertComponent al = new AlertComponent();
+                al.showAlert("Succesfully delete data", "Yeaaay!", "Success");
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void rowClicked(MouseEvent event){
+        WargaService warga = tableWarga.getSelectionModel().getSelectedItem();
+        namaInput.setText(String.valueOf(warga.getNama()));
+        umurInput.setText(String.valueOf(warga.getUmur()));
+        agamaInput.setText(String.valueOf(warga.getAgama()));
+        tglLahirDate.setValue(LocalDate.parse(String.valueOf(warga.getTanggalLahir()))); 
+        noTelpInput.setText(String.valueOf(warga.getNoTelp()));
+       
+    }
 
 
 
@@ -266,9 +356,6 @@ public class WargaController implements Initializable {
         jenisKelaminColumn.setCellValueFactory(new PropertyValueFactory<WargaService, String>("jenisKelamin"));
         noTelpColumn.setCellValueFactory(new PropertyValueFactory<WargaService, String>("noTelp"));
         tanggalLahirColumn.setCellValueFactory(new PropertyValueFactory<WargaService, String>("tanggalLahir"));
-
-        searchChoice.getItems().addAll("Nama", "No RT", "Jenis Kelamin");
-        searchChoice.setValue("Nama");
 
         searchInput.textProperty().addListener((obs, oldValue, newValue) -> {
             switch (searchChoice.getValue())

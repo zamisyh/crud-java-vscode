@@ -53,7 +53,7 @@
                   <Font name="Chilanka Regular" size="18.0" />
                </font>
             </Text>
-            <TableView fx:id="tableWarga" layoutX="426.0" layoutY="145.0" prefHeight="468.0" prefWidth="736.0">
+            <TableView fx:id="tableWarga" layoutX="426.0" layoutY="145.0" onMouseClicked="#rowClicked" prefHeight="468.0" prefWidth="736.0">
               <columns>
                 <TableColumn fx:id="wargaIdColumn" prefWidth="44.0" text="Id" />
                 <TableColumn fx:id="namaColumn" prefWidth="171.0" text="Nama" />
