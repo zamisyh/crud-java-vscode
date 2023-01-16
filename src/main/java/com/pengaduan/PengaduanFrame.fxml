@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="696.0" prefWidth="1078.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pengaduan.PengaduanController">
+   <top>
+      <AnchorPane prefHeight="55.0" prefWidth="600.0" style="-fx-background-color: C0CDE4;" BorderPane.alignment="CENTER">
+         <children>
+            <Text layoutX="137.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sistem Pengaduan dan Laporan RT">
+               <font>
+                  <Font name="Chilanka Regular" size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </top>
+   <left>
+      <Pane prefHeight="345.0" prefWidth="619.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane prefHeight="69.0" prefWidth="1198.0" style="-fx-background-color: E2E6E2;">
+               <children>
+                  <Button fx:id="btnHome" layoutX="90.0" layoutY="21.0" mnemonicParsing="false" onAction="#btnHomeOnAction" text="Home" />
+                  <Button fx:id="btnRt" layoutX="172.0" layoutY="22.0" mnemonicParsing="false" onAction="#btnRtOnAction" text="Data RT" />
+                  <Button fx:id="btnWarga" layoutX="268.0" layoutY="23.0" mnemonicParsing="false" onAction="#btnWargaOnAction" text="Data Warga" />
+                  <Button layoutX="399.0" layoutY="23.0" mnemonicParsing="false" text="Acara" />
+               </children></Pane>
+            <Text layoutX="30.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu">
+               <font>
+                  <Font name="Chilanka Regular" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="26.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font name="Chilanka Regular" size="16.0" />
+               </font>
+            </Text>
+            <Text layoutX="26.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Page Manajemen Pengaduan Warga">
+               <font>
+                  <Font name="Chilanka Regular" size="18.0" />
+               </font>
+            </Text>
+            <TextField fx:id="judulInput" layoutX="30.0" layoutY="190.0" prefHeight="34.0" prefWidth="320.0" promptText="Masukkan judul pengaduan" />
+            <Label layoutX="30.0" layoutY="166.0" text="Judul Pengaduan" />
+            <ComboBox fx:id="wargaIdCombobox" layoutX="30.0" layoutY="266.0" prefHeight="33.0" prefWidth="149.0" promptText="Pilih nama warga" />
+            <Label layoutX="30.0" layoutY="242.0" text="Nama Warga" />
+            <DatePicker fx:id="tglDatePicker" layoutX="201.0" layoutY="265.0" prefHeight="35.0" prefWidth="149.0" promptText="Pilih tanggal pengaduan" />
+            <Label layoutX="201.0" layoutY="242.0" text="Tanggal Pengaduan" />
+            <TextArea fx:id="deskripsiTextarea" layoutX="30.0" layoutY="337.0" prefHeight="161.0" prefWidth="327.0" promptText="Masukkan deskripsi pengaduan" />
+            <Label layoutX="30.0" layoutY="313.0" text="Deskripsi Pengaduan" />
+            <TableView fx:id="tablePengaduan" layoutX="419.0" layoutY="174.0" onMouseClicked="#rowClicked" prefHeight="408.0" prefWidth="616.0">
+              <columns>
+                <TableColumn fx:id="pengaduanIdColumn" prefWidth="57.0" text="Id" />
+                <TableColumn fx:id="wargaIdColumn" prefWidth="169.0" text="Nama Warga" />
+                  <TableColumn fx:id="judulColumn" prefWidth="130.0" text="Judul" />
+                  <TableColumn fx:id="deskripsiColumn" prefWidth="130.0" text="Deskripsi" />
+                  <TableColumn fx:id="tanggalColumn" prefWidth="130.0" text="Tanggal" />
+              </columns>
+            </TableView>
+            <Button layoutX="26.0" layoutY="518.0" mnemonicParsing="false" onAction="#btnPengaduanSaveOnAction" style="-fx-background-color: BAF9AC;" text="Save">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="113.0" layoutY="518.0" mnemonicParsing="false" onAction="#btnPengaduanResetOnAction" style="-fx-background-color: F8F9AC;" text="Reset">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="204.0" layoutY="518.0" mnemonicParsing="false" onAction="#btnPengaduanUpdateOnAction" style="-fx-background-color: ACDDF9;" text="Update">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="299.0" layoutY="518.0" mnemonicParsing="false" onAction="#btnPengaduanDeleteOnAction" style="-fx-background-color: F9ACAC;" text="Delete">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ChoiceBox fx:id="searchChoiceBox" layoutX="419.0" layoutY="142.0" prefHeight="24.0" prefWidth="100.0" />
+            <TextField fx:id="searchInput" layoutX="538.0" layoutY="142.0" />
+         </children>
+      </Pane>
+   </left>
+</BorderPane>
