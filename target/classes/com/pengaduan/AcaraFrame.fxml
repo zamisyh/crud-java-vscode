@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="696.0" prefWidth="1078.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pengaduan.AcaraController">
+   <top>
+      <AnchorPane prefHeight="55.0" prefWidth="600.0" style="-fx-background-color: C0CDE4;" BorderPane.alignment="CENTER">
+         <children>
+            <Text layoutX="22.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sistem Pengaduan dan Laporan RT">
+               <font>
+                  <Font name="Chilanka Regular" size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <Pane prefHeight="345.0" prefWidth="619.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane prefHeight="69.0" prefWidth="1078.0" style="-fx-background-color: E2E6E2;">
+               <children>
+                  <Button fx:id="btnHome" layoutX="90.0" layoutY="21.0" mnemonicParsing="false" onAction="#btnHomeOnAction" text="Home" />
+                  <Button fx:id="btnRt" layoutX="172.0" layoutY="22.0" mnemonicParsing="false" onAction="#btnRtOnAction" text="Data RT" />
+                  <Button fx:id="btnWarga" layoutX="268.0" layoutY="23.0" mnemonicParsing="false" onAction="#btnWargaOnAction" text="Data Warga" />
+                  <Button layoutX="386.0" layoutY="23.0" mnemonicParsing="false" onAction="#btnPengaduanOnAction" text="Laporan" />
+               </children></Pane>
+            <Text layoutX="30.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu">
+               <font>
+                  <Font name="Chilanka Regular" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="26.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font name="Chilanka Regular" size="16.0" />
+               </font>
+            </Text>
+            <Text layoutX="26.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Page Manajemen Acara Warga">
+               <font>
+                  <Font name="Chilanka Regular" size="18.0" />
+               </font>
+            </Text>
+            <Label layoutX="28.0" layoutY="163.0" text="Judul Acara" />
+            <TextField fx:id="judulAcaraInput" layoutX="26.0" layoutY="190.0" prefHeight="34.0" prefWidth="334.0" promptText="Masukkan judul acara" />
+            <Label layoutX="28.0" layoutY="235.0" text="No RT" />
+            <ComboBox fx:id="noRtCombobox" layoutX="30.0" layoutY="257.0" prefHeight="36.0" prefWidth="156.0" />
+            <DatePicker fx:id="tanggalMulaiDatepicker" layoutX="195.0" layoutY="257.0" prefHeight="37.0" prefWidth="166.0" promptText="Pilih tanggal mulai" />
+            <Label layoutX="195.0" layoutY="235.0" text="Tanggal Mulai" />
+            <TextArea fx:id="deskripsiTextarea" layoutX="29.0" layoutY="329.0" prefHeight="102.0" prefWidth="333.0" promptText="Masukkan deskripsi acara" />
+            <Label layoutX="28.0" layoutY="307.0" text="Deskripsi Acara" />
+            <Label layoutX="28.0" layoutY="442.0" text="Jam Mulai" />
+            <TextField fx:id="jamMulaiInput" layoutX="30.0" layoutY="464.0" prefHeight="39.0" prefWidth="161.0" promptText="Masukkan jam mulai" />
+            <Label layoutX="200.0" layoutY="442.0" text="Jam Selesai" />
+            <TextField fx:id="jamSelesaiInput" layoutX="199.0" layoutY="464.0" prefHeight="39.0" prefWidth="163.0" promptText="Masukkan jam selesai" />
+            <TableView fx:id="tableAcara" layoutX="423.0" layoutY="190.0" onMouseClicked="#rowClicked" prefHeight="414.0" prefWidth="629.0">
+              <columns>
+                <TableColumn fx:id="acaraIdColumn" prefWidth="44.0" text="Id" />
+                <TableColumn fx:id="noRtColumn" prefWidth="60.0" text="No RT" />
+                  <TableColumn fx:id="judulAcaraColumn" prefWidth="118.0" text="Judul Acara" />
+                  <TableColumn fx:id="deskripsiAcaraColumn" prefWidth="135.0" text="Deskripsi Acara" />
+                  <TableColumn fx:id="tanggalMulaiColumn" prefWidth="132.0" text="Tanggal Mulai" />
+                  <TableColumn fx:id="mulaiColumn" minWidth="0.0" prefWidth="67.0" text="Mulai" />
+                  <TableColumn fx:id="selesaiColumn" minWidth="0.0" prefWidth="76.0" text="Selesai" />
+              </columns>
+            </TableView>
+            <Button layoutX="29.0" layoutY="525.0" mnemonicParsing="false" onAction="#acaraSaveOnAction" style="-fx-background-color: BAF9AC;" text="Save">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="120.0" layoutY="525.0" mnemonicParsing="false" onAction="#acaraResetOnAction" style="-fx-background-color: F8F9AC;" text="Reset">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="206.0" layoutY="525.0" mnemonicParsing="false" onAction="#acaraUpdateOnAction" style="-fx-background-color: ACDDF9;" text="Update">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="298.0" layoutY="525.0" mnemonicParsing="false" onAction="#acaraDeleteOnAction" style="-fx-background-color: F9ACAC;" text="Delete">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <ChoiceBox fx:id="searchChoice" layoutX="423.0" layoutY="159.0" prefHeight="24.0" prefWidth="92.0" />
+            <TextField fx:id="searchInput" layoutX="524.0" layoutY="159.0" promptText="Cari data ..." />
+         </children>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </Pane>
+   </center>
+</BorderPane>

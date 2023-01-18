@@ -367,5 +367,11 @@ public class PengaduanController implements Initializable {
         app.changeScene("WargaFrame.fxml");
     }
 
+    public void btnAcaraOnAction(ActionEvent event) throws IOException{
+        App app = new App();
+
+        app.changeScene("AcaraFrame.fxml");
+    }
+
    
 }

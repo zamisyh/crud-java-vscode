@@ -205,5 +205,11 @@ public class RtController implements Initializable {
 
         app.changeScene("PengaduanFrame.fxml");
     }
+
+    public void btnAcaraOnAction(ActionEvent event) throws IOException{
+        App app = new App();
+
+        app.changeScene("AcaraFrame.fxml");
+    }
     
 }

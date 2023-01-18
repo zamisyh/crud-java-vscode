@@ -36,7 +36,7 @@
                   <Button fx:id="btnHome" layoutX="90.0" layoutY="21.0" mnemonicParsing="false" onAction="#btnHomeOnAction" text="Home" />
                   <Button fx:id="btnRt" layoutX="172.0" layoutY="22.0" mnemonicParsing="false" onAction="#btnRtOnAction" text="Data RT" />
                   <Button fx:id="btnWarga" layoutX="268.0" layoutY="23.0" mnemonicParsing="false" onAction="#btnWargaOnAction" text="Data Warga" />
-                  <Button layoutX="399.0" layoutY="23.0" mnemonicParsing="false" text="Acara" />
+                  <Button layoutX="399.0" layoutY="23.0" mnemonicParsing="false" onAction="#btnAcaraOnAction" text="Acara" />
                </children></Pane>
             <Text layoutX="30.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu">
                <font>
