@@ -33,7 +33,7 @@
                </font>
             </Text>
             <Button fx:id="btnWarga" layoutX="178.0" layoutY="21.0" mnemonicParsing="false" onAction="#btnWargaOnAction" text="Data Warga" />
-            <Button layoutX="300.0" layoutY="21.0" mnemonicParsing="false" text="Acara" />
+            <Button layoutX="300.0" layoutY="21.0" mnemonicParsing="false" onAction="#btnAcaraOnAction" text="Acara" />
             <Button fx:id="btnPengaduan" layoutX="382.0" layoutY="21.0" mnemonicParsing="false" onAction="#btnPengaduanOnAction" text="Laporan" />
             <Pane layoutX="28.0" layoutY="86.0" prefHeight="87.0" prefWidth="115.0" style="-fx-background-color: C0CDE4;">
                <cursor>
